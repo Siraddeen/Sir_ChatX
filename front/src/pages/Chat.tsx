@@ -8,7 +8,7 @@ import MessageList from "../components/MessageList";
 import ChatHeader from "../components/ChatHeader";
 import MessageInput from "../components/MessageInput";
 
-const socket = io("http://localhost:4000");
+const socket = io("https://sir-chatx.onrender.com");
 
 interface User {
   id: string;
@@ -35,7 +35,7 @@ const Chat: React.FC = () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
     axios
-      .get("http://localhost:4000/current-user")
+      .get("https://sir-chatx.onrender.com/current-user")
       .then((response) => setCurrentUser(response.data))
       .catch((error) => console.error(error));
 
@@ -56,7 +56,7 @@ const Chat: React.FC = () => {
     socket.emit("join", { userId: user.id });
     try {
       const response = await axios.get(
-        `http://localhost:4000/messages/${user.id}`
+        `https://sir-chatx.onrender.com/messages/${user.id}`
       );
       setMessages(response.data);
     } catch (error) {
@@ -76,7 +76,7 @@ const Chat: React.FC = () => {
     };
 
     try {
-      await axios.post("http://localhost:4000/messages", message);
+      await axios.post("https://sir-chatx.onrender.com/messages", message);
       socket.emit("sendMessage", message);
       setMessages((prevMessages) => [...prevMessages, message]);
     } catch (error) {

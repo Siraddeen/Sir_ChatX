@@ -12,7 +12,7 @@ const SearchUser: React.FC<SearchUserProps> = ({ onUserSelect }) => {
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/users?search=${search}`
+        `https://sir-chatx.onrender.com/users?search=${search}`
       );
       setUsers(response.data);
     } catch (error) {

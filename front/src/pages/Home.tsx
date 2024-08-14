@@ -11,11 +11,14 @@ const Home: React.FC = () => {
 
   const handleSignUp = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/signup", {
-        name,
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "https://sir-chatx.onrender.com/signup",
+        {
+          name,
+          username,
+          password,
+        }
+      );
       localStorage.setItem("token", response.data.token);
       navigate("/chat");
     } catch (error) {
@@ -26,10 +29,13 @@ const Home: React.FC = () => {
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/signin", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "https://sir-chatx.onrender.com/signin",
+        {
+          username,
+          password,
+        }
+      );
       localStorage.setItem("token", response.data.token);
       navigate("/chat");
     } catch (error) {
